@@ -54,7 +54,8 @@ if keyword:
 
     fig, ax = plt.subplots()
     ax = df['검색량'].plot()
-    ax = df2['검색량'].plot()
+    if keyword2:
+        ax = df2['검색량'].plot()
     ax.grid()
     ax.set(ylabel='search', xlabel='year')
     st.pyplot(fig)
