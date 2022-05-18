@@ -41,5 +41,4 @@ if keyword:
     ax = df['검색량'].plot()
     
     st.pyplot(fig)
-        
-    st.pyplot()
+
