@@ -38,7 +38,8 @@ if keyword:
     df['날짜'] = pd.to_datetime(df['날짜 및 기간(주)'])
     df['연도']=df['날짜'].dt.year
     fig, ax = plt.subplots()
-    ax = df['검색량'].plot()
-    
+    #ax = df['검색량'].plot()
+    ax.lineplot(df['연도'], df['검색량'])
+    ax.set(ylabel='search', xlabel='date')
     st.pyplot(fig)
 
