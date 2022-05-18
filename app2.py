@@ -41,8 +41,7 @@ if keyword:
     
     fig, ax = plt.subplots(figsize=(6,10))
     ax = df['검색량'].plot()
-    ax.grid(axis='x')
-    ax.set_xticks([17, 18, 19, 20, 21, 22])
+    ax.grid()
     ax.set(ylabel='search', xlabel='date')
     st.pyplot(fig)
 
