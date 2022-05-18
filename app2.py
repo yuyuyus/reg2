@@ -43,11 +43,11 @@ if keyword:
     
     df = get_data(keyword)
     
-    st.write('### 매주 검색량(위:검색어1, 아래:검색어2)')
-    st.dataframe(df)
+    #st.write('### 매주 검색량(위:검색어1, 아래:검색어2)')
+    #st.dataframe(df)
     if keyword2:
             df2 = get_data2(keyword2) 
-            st.dataframe(df2)
+            #st.dataframe(df2)
    
  
     st.write('### 매주 검색량 그래프(파랑:검색어1, 주황:검색어2)')
