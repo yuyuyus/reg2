@@ -19,13 +19,25 @@ def get_data(keyword):
     df.set_index("날짜 및 기간(주)", inplace=True)
     return df
 
+def get_data2(keyword2):
+    keyword2 = [keyword2]
+    pytrend = TrendReq(hl='KR', tz=540)
+    pytrend.build_payload(kw_list=keyword2, geo='KR')
+    df2 = pytrend.interest_over_time()
+    df2.drop(columns=['isPartial'], inplace=True)
+    df2.reset_index(inplace=True)
+    df2.columns = ["날짜 및 기간(주)", "검색량"]
+    df2.set_index("날짜 및 기간(주)", inplace=True)
+    return df2
+
 # sidebar
 st.sidebar.write('# 구글 검색량 확인하기')
 st.sidebar.write(
     '''
    사람들이 구글과 유튜브에서 검색어를 검색한 횟수를 그래프로 보여줍니다. 시간 흐름에 따라 검색어에 대한 관심도가 가장 높을 때를 100으로 잡고 변화 양상을 보여줍니다. 
     ''')
-keyword = st.sidebar.text_input("검색어를 입력하세요.", help="구글 트렌드로 확인하는 검색량입니다.")
+keyword = st.sidebar.text_input("검색어1를 입력하세요.", help="구글 트렌드로 확인하는 검색량입니다.")
+keyword2 = st.sidebar.text_input("검색어2를 입력하세요.", help="구글 트렌드로 확인하는 검색량입니다.")
 
 if keyword:
     
@@ -33,6 +45,7 @@ if keyword:
     
     st.write('### 매주 검색량 데이터')
     st.dataframe(df)
+    
    
  
     st.write('### 매주 검색량 그래프')
