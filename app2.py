@@ -16,6 +16,7 @@ def get_data(keyword):
     df.drop(columns=['isPartial'], inplace=True)
     df.reset_index(inplace=True)
     df.columns = ["날짜 및 기간(주)", "검색량"]
+    df.set_index("날짜 및 기간(주)")
     return df
 
 # sidebar
@@ -35,9 +36,9 @@ if keyword:
    
  
     st.write('### 매주 검색량 그래프로 보기')
-    df['날짜'] = pd.to_datetime(df['날짜 및 기간(주)'])
-    df['연도']=df['날짜'].dt.year
-    year=df['연도'].values.tolist()
+    #df['날짜'] = pd.to_datetime(df['날짜 및 기간(주)'])
+    #df['연도']=df['날짜'].dt.year
+    #year=df['연도'].values.tolist()
     
     fig, ax = plt.subplots()
     ax = df['검색량'].plot()
