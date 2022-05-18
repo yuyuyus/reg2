@@ -37,6 +37,9 @@ if keyword:
     st.write('### 매주 검색량 그래프로 보기')
     df['날짜'] = pd.to_datetime(df['날짜 및 기간(주)'])
     df['연도']=df['날짜'].dt.year
-    sns.lineplot(data=df, x='연도', y='검색량')
+    fig, ax = plt.subplots()
+    ax = df['검색량'].plot()
+    
+    st.pyplot(fig)
         
     st.pyplot()
