@@ -28,10 +28,10 @@ if keyword:
     
     df = get_data(keyword)
     
-    st.sidebar.write('### 매주 검색량 표로 보여주기')
+    st.write('### 매주 검색량 표로 보기')
     st.dataframe(df)
     
-    st.sidebar.write('### 매주 검색량 그래프로 보여주기')
+    st.write('### 매주 검색량 그래프로 보기')
     fig, ax = plt.subplots()
     ax = df['검색량'].plot()
     
