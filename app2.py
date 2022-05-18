@@ -8,7 +8,7 @@ from pytrends.request import TrendReq
 @st.cache
 def get_data(keyword):
     keyword = [keyword]
-    pytrend = TrendReq()
+    pytrend = TrendReq(hl='KR', tz=540)
     pytrend.build_payload(kw_list=keyword)
     df = pytrend.interest_over_time()
     df.drop(columns=['isPartial'], inplace=True)
