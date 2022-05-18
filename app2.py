@@ -1,15 +1,28 @@
 import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
 
+from pytrends.request import TrendReq
 
-st.title("나의 검색기록")
-st.write("그동안 내가 검색한 단어 목록을 보여줍니다.")
-input = st.text_input("검색어를 쓰세요")
-st.write(input)
+# get google trends data from keyword list
+@st.cache
+def get_data(keyword):
+    keyword = [keyword]
+    pytrend = TrendReq()
+    pytrend.build_payload(kw_list=keyword)
+    df = pytrend.interest_over_time()
+    df.drop(columns=['isPartial'], inplace=True)
+    df.reset_index(inplace=True)
+    df.columns = ["ds", "y"]
+    return df
 
+# sidebar
+st.sidebar.write("## Trend based on keyword")
+keyword = st.sidebar.text_input("Enter a keyword", help="Look up on Google Trends")
 
-#list=[]
-#while True:
-#  input = st.text_input("검색어를 쓰세요")
-#  if len(list)<31:
-#   list.append(input)
-#    st.write(list)
+if keyword:
+    df = get_data(keyword)
+    st.dataframe(df)
+    fig, ax = plt.subplots()
+    ax = df['y'].plot()
+    st.pyplot(fig)
