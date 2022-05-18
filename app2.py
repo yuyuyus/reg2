@@ -13,12 +13,12 @@ def get_data(keyword):
     df = pytrend.interest_over_time()
     df.drop(columns=['isPartial'], inplace=True)
     df.reset_index(inplace=True)
-    df.columns = ["ds", "y"]
+    df.columns = ["날짜", "검색량"]
     return df
 
 # sidebar
 st.sidebar.write("## Trend based on keyword")
-keyword = st.sidebar.text_input("Enter a keyword", help="Look up on Google Trends")
+keyword = st.sidebar.text_input("검색어를 입력하세요.", help="Look up on Google Trends")
 
 if keyword:
     df = get_data(keyword)
