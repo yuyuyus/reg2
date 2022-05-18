@@ -50,7 +50,7 @@ if keyword:
             #st.dataframe(df2)
    
  
-    st.write('### 매주 검색량 그래프(파랑:검색어1, 주황:검색어2)')
+    st.write('### 매주 검색량 변화 그래프(파랑:검색어1, 주황:검색어2)')
 
     fig, ax = plt.subplots()
     ax = df['검색량'].plot()
