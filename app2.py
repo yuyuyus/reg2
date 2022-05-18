@@ -12,8 +12,9 @@ def get_data(keyword):
     pytrend.build_payload(kw_list=keyword, geo='KR')
     df = pytrend.interest_over_time()
     df.drop(columns=['isPartial'], inplace=True)
-    df.reset_index(inplace=True)
+    
     df.columns = ["날짜 및 기간(주)", "검색량"]
+    df.reset_index("날짜 및 기간(주)", inplace=True)
     return df
 
 # sidebar
