@@ -40,7 +40,7 @@ if keyword:
     
     fig, ax = plt.subplots()
     #ax = df['검색량'].plot()
-    ax.plot(df['연도'])
+    
     ax.set(ylabel='search', xlabel='date')
     st.pyplot(fig)
 
