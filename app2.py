@@ -43,7 +43,6 @@ if keyword:
     fig, ax = plt.subplots()
     ax = df['검색량'].plot()
     ax.grid()
-    ax.set_ylim([10. 20, 30, 40, 50, 60, 70, 80, 90, 100])
     ax.set(ylabel='search', xlabel='year')
     st.pyplot(fig)
 
