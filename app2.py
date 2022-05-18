@@ -25,8 +25,14 @@ st.sidebar.write(
 keyword = st.sidebar.text_input("검색어를 입력하세요.", help="구글 트렌드로 확인하는 검색량입니다.")
 
 if keyword:
+    
     df = get_data(keyword)
+    
+    st.sidebar.write('### 매주 검색량 표로 보여주기')
     st.dataframe(df)
+    
+    st.sidebar.write('### 매주 검색량 그래프로 보여주기')
     fig, ax = plt.subplots()
     ax = df['검색량'].plot()
+    
     st.pyplot(fig)
