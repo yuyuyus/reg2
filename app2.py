@@ -46,8 +46,8 @@ if keyword:
     st.write('### 매주 검색량 데이터')
     st.dataframe(df)
     if keyword2:
-            df2 = get_data(keyword2) 
-            st.dataframe(df)
+            df2 = get_data2(keyword2) 
+            st.dataframe(df2)
    
  
     st.write('### 매주 검색량 그래프')
