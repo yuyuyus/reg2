@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
+from datetime import datetime
 
 from pytrends.request import TrendReq
 
@@ -12,9 +14,8 @@ def get_data(keyword):
     pytrend.build_payload(kw_list=keyword, geo='KR')
     df = pytrend.interest_over_time()
     df.drop(columns=['isPartial'], inplace=True)
-    
+    df.reset_index(inplace=True)
     df.columns = ["날짜 및 기간(주)", "검색량"]
-    df.reset_index("날짜 및 기간(주)", inplace=True)
     return df
 
 # sidebar
@@ -31,9 +32,13 @@ if keyword:
     
     st.write('### 매주 검색량 표로 보기')
     st.dataframe(df)
-    
+   
+ 
     st.write('### 매주 검색량 그래프로 보기')
-    fig, ax = plt.subplots()
-    ax = df['검색량'].plot()
+    df['날짜'] = pd.to_datetime(df['날짜 및 기간(주)'])
+    df['연도']=df['날짜'].dt.year
+    sns.lineplot(data=df, x='연도', y='검색량')
+    #fig, ax = plt.subplots()
+    #ax = df['검색량'].plot()
     
-    st.pyplot(fig)
+    st.pyplot()
