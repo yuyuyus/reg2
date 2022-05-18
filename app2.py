@@ -39,7 +39,7 @@ if keyword:
     df['연도']=df['날짜'].dt.year
     year=df['연도'].values.tolist()
     
-    fig, ax = plt.subplots(figsize=(6,10))
+    fig, ax = plt.subplots()
     ax = df['검색량'].plot()
     ax.grid()
     ax.set(ylabel='search', xlabel='date')
