@@ -51,12 +51,10 @@ if keyword:
    
  
     st.write('### 매주 검색량 그래프')
-    #df['날짜'] = pd.to_datetime(df['날짜 및 기간(주)'])
-    #df['연도']=df['날짜'].dt.year
-    #year=df['연도'].values.tolist()
-    
+
     fig, ax = plt.subplots()
     ax = df['검색량'].plot()
+    ax = df2['검색량'].plot()
     ax.grid()
     ax.set(ylabel='search', xlabel='year')
     st.pyplot(fig)
