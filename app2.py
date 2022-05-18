@@ -38,9 +38,11 @@ if keyword:
     df['날짜'] = pd.to_datetime(df['날짜 및 기간(주)'])
     df['연도']=df['날짜'].dt.year
     year=df['연도'].values.tolist()
-    fig, ax = plt.subplots()
+    
+    fig, ax = plt.subplots(figsize=(6,10))
     ax = df['검색량'].plot()
-    ax.set_xticks(year)
+    ax.grid(axis='x')
+    ax.set_xticks([17, 18, 19, 20, 21, 22])
     ax.set(ylabel='search', xlabel='date')
     st.pyplot(fig)
 
