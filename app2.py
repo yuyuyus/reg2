@@ -17,12 +17,12 @@ def get_data(keyword):
     return df
 
 # sidebar
-st.sidebar.write("## Trend based on keyword")
+st.sidebar.write("## 구글 검색량 확인하기")
 keyword = st.sidebar.text_input("검색어를 입력하세요.", help="Look up on Google Trends")
 
 if keyword:
     df = get_data(keyword)
     st.dataframe(df)
     fig, ax = plt.subplots()
-    ax = df['y'].plot()
+    ax = df['검색량'].plot()
     st.pyplot(fig)
