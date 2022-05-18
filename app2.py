@@ -16,7 +16,7 @@ def get_data(keyword):
     df.drop(columns=['isPartial'], inplace=True)
     df.reset_index(inplace=True)
     df.columns = ["날짜 및 기간(주)", "검색량"]
-    df.set_index("날짜 및 기간(주)")
+    df.set_index("날짜 및 기간(주)", inplace=True)
     return df
 
 # sidebar
