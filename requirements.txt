@@ -8,4 +8,4 @@ ptyprocess
 seaborn
 scikit-learn
 streamlit
-
+pytrends
