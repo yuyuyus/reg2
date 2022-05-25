@@ -10,4 +10,4 @@ scikit-learn
 streamlit
 pytrends
 datetime
-dateutil
+relativedelta
